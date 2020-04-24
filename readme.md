@@ -12,11 +12,13 @@ The random number generator is included in the publish method on the `QueueClien
 
 ## Setup
 
-TODO: include info about rabbitmq setup
+I am running a local instance of rabbimq for this project. To set one up for yourself install rabbitmq. For homebrew users: `brew install rabbitmq` (don't forget to brew update first). Then we need to enable a few plugins via `rabbitmq-plugins enable rabbitmq_mqtt rabbitmq_web_mqtt`.
+
+To start rabbitmq use the command `rabbitmq-server` and stop the process with `<CTRL C>`.
 
 ## To start the application
 
-From the root of this project run `start.sh`. It should already have the correct permissions, however if it does not run `chmod +x start.sh`.
+Once you have your rabbitmq process running, from the root of this project run `start.sh`. It should already have the correct permissions, however if it does not run `chmod +x start.sh`.
 
 This will start the both the `Procuder.py` and `Consumer.py` scripts as background processes. You will see the output of `Consumer.py` (namely the random number read from the MQTT topic in the message broker)
 
