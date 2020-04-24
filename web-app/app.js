@@ -7,47 +7,56 @@ const client = new Paho.MQTT.Client(
   "myclientid_" + parseInt(Math.random() * 100, 10)
 );
 
-// set callback handlers
-client.onConnectionLost = onConnectionLost;
-client.onMessageArrived = onMessageArrived;
-
-// connect the client
-client.connect({ onSuccess: onConnect });
+/**
+ * ### Callback functions ###
+ */
 
 // called when the client connects
-function onConnect() {
-  // Once a connection has been made make a subscription
-  console.log("Connected ");
+const onConnect = () => {
+  console.log("Connected"); // Once a connection has been made make a subscription
   client.subscribe("rand");
-}
+};
 
 // called when the client loses its connection
-function onConnectionLost(responseObject) {
+const onConnectionLost = (responseObject) => {
   if (responseObject.errorCode !== 0) {
     console.log("Connection Lost: " + responseObject.errorMessage);
   }
-}
+};
 
 // called when a message arrives
-function onMessageArrived(message) {
+const onMessageArrived = (message) => {
   let input = message.payloadString;
-
   processMessage(input);
   console.log("Message arrived: " + input);
-}
+};
 
-function processMessage(input) {
+/**
+ * ### Helper functions ###
+ */
+
+const processMessage = (input) => {
+  let updatedField = "<h1>Error! Expected a number.</h1>";
   // checks if the message is indeed a number
   if (!isNaN(input)) {
-    // updates the displayed number
-    $("#rand").html(`<h1>${input}</h1>`);
+    updatedField = `<h1>${input}</h1>`;
+    //animates the solar panels
     $("#solar").animate({ width: newWidth(input) }, 1000);
-  } else {
-    $("#rand").html(`<h1>Error! Expected a number.</h1>`);
   }
-}
+  // updates the displayed number
+  $("#rand").html(updatedField);
+};
 
 // arbitrary scale, I just decided that this one looked best
-function newWidth(inputNumber) {
-  return 400 + 4 * inputNumber;
-}
+const newWidth = (inputNumber) => 400 + 4 * inputNumber;
+
+/**
+ * ### Start the MQTT Client ###
+ */
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost.bind(this);
+client.onMessageArrived = onMessageArrived.bind(this);
+
+// connect the client
+client.connect({ onSuccess: onConnect.bind(this) });
