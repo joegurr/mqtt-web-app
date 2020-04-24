@@ -1,0 +1,20 @@
+body {
+  background: pink;
+  font-family: Arial;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+#rand {
+  background: lightgoldenrodyellow;
+  border-color: lightcoral;
+  border-style: solid;
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}

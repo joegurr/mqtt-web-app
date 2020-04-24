@@ -21,3 +21,7 @@ From the root of this project run `start.sh`. It should already have the correct
 This will start the both the `Procuder.py` and `Consumer.py` scripts as background processes. You will see the output of `Consumer.py` (namely the random number read from the MQTT topic in the message broker)
 
 This means you will not be able to stop the process with `<CTRL C>`as normal. To stop these processes find their process id with `ps | grep -E "(Producer|Consumer).py"` and use the `kill` command to terminate them.
+
+### Web Application
+
+To test the web application all you need to do is open the file `./web-app/index.html` in your browser of choice while the python applications are running.
