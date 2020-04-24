@@ -3,11 +3,13 @@ from datetime import datetime
 import paho.mqtt.client as mqtt
 
 class QueueClient:
-    def __init__(self, client_id):
+    def __init__(self, client_id, silentPublishing = True):
         self.client = mqtt.Client(client_id)
         self.client.on_connect = on_connect
         self.client.on_message = on_message
-        self.client.on_publish = on_publish
+
+        if not silentPublishing:
+            self.client.on_publish = on_publish
 
     def connect(self, broker_address = '127.0.0.1'):
         self.client.connect(broker_address)
