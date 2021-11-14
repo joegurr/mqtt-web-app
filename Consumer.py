@@ -1,7 +1,13 @@
 from QueueClient import QueueClient
 
-consumer = QueueClient('c')
 
-consumer.connect()
+def main():
+    consumer = QueueClient("c")
 
-consumer.listen()
+    consumer.connect()
+
+    consumer.listen()
+
+
+if __name__ == "__main__":
+    main()

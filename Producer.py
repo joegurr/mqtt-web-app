@@ -1,7 +1,13 @@
 from QueueClient import QueueClient
 
-producer = QueueClient('p')
 
-producer.connect()
+def main():
+    producer = QueueClient("p")
 
-producer.publish()
+    producer.connect()
+
+    producer.publish()
+
+
+if __name__ == "__main__":
+    main()
