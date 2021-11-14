@@ -18,7 +18,7 @@ I've used [RabbitMQ](https://www.rabbitmq.com/) as my message broker, and paho M
 
 These following instructions assume you are using a UNIX based system.
 
-I am running a local instance of rabbimq for this project. To set one up for yourself install rabbitmq. For debian users: `sudo apt install rabbitmq-server`. Then we need to enable a few plugins via `rabbitmq-plugins enable rabbitmq_mqtt rabbitmq_web_mqtt`.
+I am running a local instance of rabbitmq for this project. To set one up for yourself install rabbitmq. For debian users: `sudo apt install rabbitmq-server`. Then we need to enable a few plugins via `rabbitmq-plugins enable rabbitmq_mqtt rabbitmq_web_mqtt`.
 
 To start rabbitmq use the command `rabbitmq-server` and stop the process with `<CTRL C>`.
 
